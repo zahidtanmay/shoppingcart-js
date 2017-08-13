@@ -6,3 +6,6 @@
 #npm init
 #npm start
 #setup done
+
+#added bootstrap
+#npm install --save express-handlebars

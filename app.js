@@ -4,14 +4,24 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var expressHbs = require('express-handlebars');
+var mysql = require('mysql');
+var mongoose = require('mongoose');
 
+//for mysql
+// var connection =mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'shoppingcart-js'
+// });
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
+mongoose.connect('localhost:27017/shopping');
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
